@@ -1,0 +1,16 @@
+{
+  "rules": {
+    "liveLocations": {
+      "$responderId": {
+        ".read": "auth != null",
+        ".write": "auth != null && (auth.uid === $responderId || root.child('users').child(auth.uid).child('role').val() === 'ADMIN')"
+      }
+    },
+    "emergencyStatus": {
+      "$incidentId": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    }
+  }
+}
